@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object.defineProperty</title>
+</head>
+<body>
+   <script>
+    //  Object.defineProperty(obj, prop, descriptor)
+     var obj1 = {};
+     var descriptor = Object.create(null);
+     descriptor.value = 'static';
+     Object.defineProperty(obj1, 'key', descriptor);
+     console.log(obj1);
+    //  由于descripter的enumerable默认为false，因为该对象无法遍历
+     for(let i in obj1){
+       console.log(i) // undefined
+     }
+   </script>
+
+   <script>
+     var obj2 = {};
+     Object.defineProperty(obj2, 'key', {
+       enumerable: true,
+       configurable: false,
+       writable: false,
+       value: 'static'
+     })
+     //  把descripter的enumerable改为true，则可遍历
+     for(let i in obj2){
+       console.log(i) // key
+     }
+   </script>
+</body>
+</html>
