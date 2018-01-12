@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+   <p>view <=> data</p>
+   <input type="text" id="test" placeholder="test">
+   <p>result: <span id="result"></span></p>
+   <button id="btn">change result</button>
+   <script>
+     var data = {}
+     var bValue = 'bb';
+     Object.defineProperty(data, 'b', {
+       enumerable: false,
+       configurable: true,
+       get: function(){
+         console.log('get');
+         return bValue;
+       },
+       set: function(newVal) {
+         console.log('set')
+         updateView(newVal);
+         bValue = newVal;
+         return newVal;
+       }
+     })
+     document.querySelector('#test').onkeyup = function(e){
+        data.b = e.target.value;
+     }
+     document.querySelector('#result').innerHTML = data.b;
+     document.querySelector('#btn').onclick =function(){
+       data.b = 'cc';
+     }
+     function updateView(val){
+       document.querySelector('#result').innerHTML = val;
+     }
+
+   </script>
+</body>
+</html>
