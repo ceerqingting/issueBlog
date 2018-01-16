@@ -5,20 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="./watcher.js"></script>
+  <script src="./observer.js"></script>
   <script src="./compile.js"></script>
   <script src="./index.js"></script>
 </head>
 <body>
   <div id="app">
-     <h2>{{title}}</h2>
+     <h2>{{title.a}}</h2>
      <p>{{name}}</p>
+     <input v-model="name">
+     <button v-on:click="clickMe">按钮</button>
   </div>
   <script>
-    new Vue({
+   var vm =  new Vue({
       el : '#app',
       data: {
-        title: 'this is title',
-        name: 'this is name',
+        title: {
+          a: 'titlea',
+          b: 'titleb'
+        },
+        name: ''
+      },
+      methods: {
+        clickMe: function() {
+          console.log('hello');
+          this.title.a = 'change title';
+        }
+      },
+      mounted () {
+        setTimeout(() => {
+          this.title.a = '1000 timeout';
+        }, 1000)
       }
     })
 

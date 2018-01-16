@@ -11,7 +11,7 @@
 </style>
 <body>
     <div id="app">
-        <h2>{{title}}</h2>
+        <h2>{{title.a}}</h2>
         <input v-model="name">
         <h1>{{name}}</h1>
         <button v-on:click="clickMe">click me!</button>
@@ -26,7 +26,10 @@
      new Vue({
          el: '#app',
          data: {
-             title: 'vue code',
+             title: {
+                 a: 'titlea',
+                 b: 'titleb'
+                },
              name: 'hello world',
          },
          methods: {
