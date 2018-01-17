@@ -24,7 +24,7 @@ Compile.prototype = {
     el.childNodes.forEach(function (node) {
       var reg = /\{\{(.*)\}\}/;
       if (self.isTextNode(node)&& reg.test(node.textContent)) {
-        node.textContent = data[reg.exec(node.textContent)[1]];
+        node.textContent = self.vm.data[reg.exec(node.textContent)[1]];
       } else if (self.isElementNode(node)) {
         var attrs = node.attributes;
         Array.prototype.forEach.call(attrs, function (attr) {
