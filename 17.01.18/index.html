@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getRand(a, b) {
+      var rand = Math.round(Math.random()*(b-a) + a);
+      return rand;
+    }
+
+    function checkArrIn(rand, array) {
+      if (array.indexOf(rand) > -1) {
+        return true;
+      }
+      return false;
+    }
+    function fn(n, min, max) {
+      debugger;
+      var arr = [];
+      var isNum = !isNaN(Number(n)); 
+      var isRandOk = (n >=min && n<=max && n<= (max-min + 1)) ? true : false;
+      if (n && isRandOk && isNum) {
+        for (var i = 0; i < n; i++) {
+          var rand = getRand(min, max);
+          if (checkArrIn(rand, arr)){
+            i--
+          } else {
+            arr.push(rand);
+          }
+        }
+      }
+      console.log(arr);
+      return arr;
+    }
+    fn(31, 2, 32);
+  </script>
+</body>
+</html>
