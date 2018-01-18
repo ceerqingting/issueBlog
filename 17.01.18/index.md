@@ -3,38 +3,30 @@
 
 
 
-
-
-
-
 ```javascript
-    function getRand(a, b) {
-      var rand = Math.round(Math.random()*(b-a) + a);
-      return rand;
+ function getRand(a, b) {
+      return Math.round(Math.random()*(a-b)) + b;
     }
-
-    function checkArrIn(rand, array) {
-      if (array.indexOf(rand) > -1) {
+    function isArrIn(arr, n) {
+      if (arr.indexOf(n) > -1) {
         return true;
       }
       return false;
     }
-    function fn(n, min, max) {
-      debugger;
+    function fn(n, max, min) {
       var arr = [];
-      var isNum = !isNaN(Number(n)); 
-      var isRandOk = (n >=min && n<=max && n<= (max-min + 1)) ? true : false;
-      if (n && isRandOk && isNum) {
-        for (var i = 0; i < n; i++) {
-          var rand = getRand(min, max);
-          if (checkArrIn(rand, arr)){
-            i--
+      if (n && n <= max-min) {
+        for (var i = 0 ;i < n; i ++) {
+         var rand = getRand(max, min); 
+          if (isArrIn(arr, rand)) {
+            i--;
           } else {
             arr.push(rand);
           }
         }
       }
-      return arr;
+      console.log(arr);
     }
+    fn (2, 5, 3);
 
 ```
