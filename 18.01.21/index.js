@@ -21,3 +21,9 @@ const obj3 = {
 const obj4  = Object.create(obj1);
 
 assert.deepEqual(obj1, obj1)
+
+// assert.deepEqual(obj1, obj2, '测试不通过')
+
+assert.deepEqual(obj1, obj3)
+
+assert.deepEqual(obj1, obj4)
