@@ -1,0 +1,20 @@
+{
+  "name": "mocha-demos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "testing"
+  ],
+  "author": "Jiang Fen",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
