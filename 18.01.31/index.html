@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="box" name="box">Click Me!</button>
+  <script>
+    // 示例1
+    // var name = "Bob";  
+    // var nameObj = {
+    //   name: "Tom",
+    //   showName: function() {
+    //     alert(this.name);
+    //   },
+    //   waitShowName: function() {
+    //     (function(){
+    //       alert(this.name);
+    //     })();
+    //     setTimeout(this.showName, 1000)
+    //   }
+    // }
+
+    // nameObj.waitShowName();
+    
+    // 示例2
+    // var someone = {
+    //   name : "Bob",
+    //   showName: function() {
+    //     alert(this.name);
+    //   }
+    // }
+
+    // var other = {
+    //   name: "Tom",
+    //   showName: someone.showName,
+    //   show: function(){
+    //     alert(this);
+    //   }
+    // }
+
+    // other.showName();
+
+    // 示例3
+    // var name = "Tom";
+    // var Bob = {
+    //   name: "Bob",
+    //   show: function() {
+    //     alert(this.name);
+    //   }
+    // }
+    // var show = Bob.show;
+
+    // show();
+    
+    // 示例4
+    // var name = "window";
+    // var Bob = {
+    //   name: "Bob",
+    //   showName: function(){
+    //     alert(this.name)
+    //   }
+    // }
+    // var Tom = {
+    //   name: "Tom",
+    //   showName: function() {
+    //     var fun = Bob.showName;
+    //     fun();
+    //   }
+    // }
+    // Tom.showName();
+
+    // 示例5
+    // var name = "window";
+    // var Bob = {
+    //   name: "Bob",
+    //   showName: function() {
+    //     eval("alert(this.name)");
+    //   }
+    // }
+    // Bob.showName();
+
+    // 示例6
+    // var name = "window";
+    // var someone = {
+    //   name: "Bob",
+    //   showName: function(){
+    //     alert(this.name);
+    //   }
+    // }
+    // var other = {
+    //   name: "Tom"
+    // }
+    // someone.showName.apply();
+    // someone.showName.apply(other);
+
+    // 示例7
+    // function Person(__name) {
+    //   this.name = __name;
+    // }
+    // Person.prototype.show = function() {
+    //   alert(this.name);
+    // }
+    // var Bob = new Person("Bob");
+    // Bob.show();
+   
+   // 示例8
+    // var name = "Bob";
+    // var nameObj = {
+    //   name: "Tom",
+    //   showName: function() {
+    //     alert(this.name);
+    //   },
+    //   waitShowName: function() {
+    //     var that = this;
+    //     setTimeout("that.showName()", 1000);
+    //   }
+    // }
+    // nameObj.waitShowName();
+
+    // 示例9
+    // var fun = new Function("alert(this)");
+    // fun()
+   
+    // 示例10
+    
+    // var name = "window";
+    
+    // function showName() {
+    //   console.log(this);
+    //   alert(this.name);
+    // }
+    
+    // document.getElementById('box').addEventListener('click', showName, false)
+
+    // 示例11
+    function Button(clickFunction) {
+    this.button = document.createElement("button");
+    this.button.appendChild(document.createTextNode("Test"));
+    this.button.value = clickFunction;
+    document.body.appendChild(this.button);
+    this.button.onclick = function(){
+      // console.log(this);
+      alert(this.value);
+    }
+}
+   var bt = new Button(13);    //单击这个button的时候alert出空
+
+  </script>
+</body>
+</html>
