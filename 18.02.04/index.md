@@ -1,9 +1,9 @@
 ### 跨域解决方案
 
 #### 什么是跨域
-
 【广义的跨域】：跨域是指一个域下的文档或者脚本试图请求另一个域下的资源
-1. 资源跳转：A链接、重定向、表单提交
+
+1. 资源跳转：A链接、重定向、表单提交
 2. 资源嵌入： \<link>、\<script>、\<img>、\<iframe>等dom标签，还有样式中background:url()、@font-face()等文件外链
 3. 脚本请求： js发起的ajax请求、dom和js对象的跨域操作等
 
@@ -11,7 +11,7 @@
  
 【同源策略/SOP(same origin policy)】： 由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS,CSFR等攻击。同源是指“协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源
 
-【限制】：
+【限制】：
 1. Cookie、LocalStorage和IndexDB无法读取
 2. DOM和Js对象无法获得
 3. AJAX请求不能发送
@@ -36,6 +36,7 @@
 
 <h4 id="1">通过jsonp跨域</h4>
 通常为了减轻web服务器的负载，我们把js、css、img等静态资源分离到另一台独立域名的服务器上，在html页面中在通过相应的标签从不同域名下加载静态资源，而被浏览器允许。基于此原理，我们可以通过动态创建script，再请求一个带参网址实现跨域通信
+
 
 - 原生实现
 ```javascript
@@ -66,7 +67,8 @@
 
 <h4 id="2">document.domain + iframe跨域</h4>
 此方案仅限主域相同，子域不同的跨域应用场景
-【实现原理】：两个页面都通过js强制设置document.domain为基础主域，就实现了同域
+
+【实现原理】：两个页面都通过js强制设置document.domain为基础主域，就实现了同域
 
 - 父窗口： (http://www.domain.com/a.html)
 
@@ -121,7 +123,7 @@
 - c.html: (http://www.domain1.com/c.html)
 ```html
  <script>
-  // 监听b.html传来的hash值
+  //监听b.html传来的hash值
   window.onhashchange = function() {
     window.parent.parent.onCallback('hello:' + location.hash.replace('#user=', ''));
   }
@@ -129,6 +131,7 @@
 ```
 <h4 id="4">window.name + iframe跨域</h4>
 window.name属性的独特之处：name值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的name值（2MB）
+
 - a.html: (http://www.domain1.com/a.html)
 
 ```javascript
@@ -164,7 +167,7 @@ window.name属性的独特之处：name值在不同的页面（甚至不同域�
 
 中间代理页，与a.html同域，内容为空即可
 
-- b.thml: (http://www.domain2.com/b.html)
+- b.html: (http://www.domain2.com/b.html)
 ```script
   window.name = 'This is domain2 data!';
 ```
@@ -172,14 +175,14 @@ window.name属性的独特之处：name值在不同的页面（甚至不同域�
 - 总结： 通过iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个巧妙地绕过了浏览器的跨域访问限制，但同时又是安全操作
 
 <h4 id="5">postMessage跨域</h4>
-postMessage是HTML5 XMLHttpRequest Level2中的API，且是为数不多可以跨域操作的window属性之一，它可以用于解决一下方面问题：
+postMessage是HTML5 XMLHttpRequest Level2中的API，且是为数不多可以跨域操作的window属性之一，它可以用于解决一下方面问题：
+
 - 页面和其打开的新窗口的数据传递
 - 多窗口之间消息传递
 - 页面与嵌套的iframe消息传递
-- 上面三个场景的跨域数据传
-递
+- 上面三个场景的跨域数据传递
 
-【用法】：postMessage(data, origin)方法接受两个参数
+【用法】：postMessage(data, origin)方法接受两个参数
 data: html5规范支持任意基本类型或可复制的对象，但部分浏览器只支持字符，所以传参时最好用JSON.stringfy()序列化
 origin: 协议 + 主机 + 端口号，也可以设置为“*”，表示可以传递给任意窗口，如果要指定和当前窗口同源的话就设置为“/”
 
@@ -273,6 +276,7 @@ origin: 协议 + 主机 + 端口号，也可以设置为“*”，表示可以�
 ```
 
 <h4 id="7">nginx代理跨域</h4>
+
 - nginx配置解决iconfont跨域
 浏览器跨域访问js、css、img等常规静态资源被同源策略许可，但iconfont字体文件（eot/otf/ttf/woff/svg）例外，此时可在nginx的静态资源服务器中加入以下配置。
 
@@ -284,7 +288,7 @@ location / {
 - nginx反向代理接口跨域
 【跨域原理】：同源策略是浏览器的安全策略，不是HTTP协议的一部分。服务器端调用HTTP接口只是使用HTTP协议，不会执行JS脚本，不需要同源策略，也就不存在跨域问题
 
-【实现思路】：通过nginx配置一个代理服务器（域名与domain1相同，端口不同）做跳板机，反向代理访问domain2接口，并且可以顺便修改cookie中domain信息，方便当前域cookie写入，实现跨域登录
+【实现思路】：通过nginx配置一个代理服务器（域名与domain1相同，端口不同）做跳板机，反向代理访问domain2接口，并且可以顺便修改cookie中domain信息，方便当前域cookie写入，实现跨域登录
 
 【nginx具体配置】
 ```
