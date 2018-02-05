@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>postMessage</title>
+</head>
+<body>
+  <iframe src="http://127.0.0.1:8080/b.html" id="iframe" style="display:none;" frameborder="0"></iframe>
+  <script>
+    var iframe = document.getElementById('iframe');
+    iframe.onload = function() {
+      var data = {
+        name: 'aym'
+      }
+      iframe.contentWindow.postMessage(JSON.stringify(data), 'http://127.0.0.1:8080');
+    }
+    window.addEventListener('message', function(e){
+      alert('data from domain2 -->' + e.data);
+    }, false)
+  </script>
+</body>
+</html>

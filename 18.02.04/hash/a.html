@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>A页面</p>
+  <iframe src="http://127.0.0.1:8080/b.html" id="iframe" style="display:none" frameborder="0"></iframe>
+  <script>
+    var iframe = document.getElementById('iframe');
+    setTimeout(function(){
+      iframe.src = iframe.src + '#user=admin';
+    }, 1000)
+    function onCallback(res) {
+      alert('data from c.html--->' + res);
+    }
+  </script>
+</body>
+</html>
