@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>document.domain</title>
+</head>
+<body>
+  <p>子页面</p>
+   <script>
+     document.domain = 'my.com';
+     alert('get js data from parent -->' + window.parent.user)
+
+   </script>
+</body>
+</html>
