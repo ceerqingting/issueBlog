@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = 1;
+    window.addEventListener('message', function(e){
+      alert('data from domain1 --->' + e.data);
+      var data = JSON.parse(e.data);
+      if (data) {
+        data.number = 16;
+        window.parent.postMessage(JSON.stringify(data), 'http://localhost:8080')
+      }
+    })
+  </script>
+</body>
+</html>

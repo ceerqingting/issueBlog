@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document.domain</title>
+</head>
+<body>
+  <p>父页面</p>
+  <iframe id="iframe" src="http://localhost2.my.com:8080/child.html" frameborder="0"></iframe>
+  <script>
+    document.domain = 'my.com';
+    var user = 'admin';
+  </script>
+</body>
+</html>
