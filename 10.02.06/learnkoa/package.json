@@ -1,0 +1,16 @@
+{
+  "name": "learnkoa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hello_koa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "co-body": "^5.1.1",
+    "koa": "^2.4.1"
+  }
+}
