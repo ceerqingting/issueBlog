@@ -197,3 +197,18 @@ changeSet2 = new Set(Array.from(set, val => val * 2));
 log(changeSet1, changeSet2);
 // Set { 2, 4, 6, 8 } Set { 2, 4, 6, 8 }
 ```
+
+#### 3. WeakSet
+
+- WeakSet结构与Set类似，也是不重复的值的集合，但是与Set有两个区别
+
+（1）WeakSet成员只能是对象
+（2）WeakSet中的对象都是弱引用，既垃圾回收机制不考虑WeakSet对该对象的引用，如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑改对象还存在WeakSet之中
+
+（3）不可遍历
+
+- 语法
+
+WeakSet是一个构造函数，可以使用new命令，创建WeakSet数据结构。可以接受一个数组或者类似数组的对象作为参数（任何具有Iterable接口的对象）该数组所有成员，都会自动成为WeakSet实例对象的成员
+
+

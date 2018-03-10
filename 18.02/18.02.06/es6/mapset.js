@@ -127,3 +127,28 @@ changeSet2 = new Set(Array.from(set, val => val * 2));
 
 log(changeSet1, changeSet2);
 // Set { 2, 4, 6, 8 } Set { 2, 4, 6, 8 }
+
+const wa = [[1, 2], [3, 4]];
+const wsa = new WeakSet(wa);
+log(wsa);
+// WeakSet {}
+
+const wb = [3, 4];
+// const wsb = new WeakSet(wb);
+// TypeError: Invalid value used in weak set
+
+const wc = new WeakSet();
+const objc = {};
+const fooc = {};
+const window = {};
+wc.add(window);
+wc.add(objc);
+
+log(wc.has(window));
+log(wc.has(fooc));
+// true
+// false
+
+wc.delete(window);
+log(wc.has(window));
+// false
