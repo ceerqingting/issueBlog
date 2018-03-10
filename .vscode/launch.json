@@ -9,6 +9,20 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}/18.01.21/index.js"
-    }
+    },
+    {
+      "name": "Launch index.html (disable sourcemaps)",
+      "type": "chrome",
+      "request": "launch",
+      "sourceMaps": false,
+      "file": "${workspaceFolder}/index.html"
+     },
+     {
+      "name": "Launch localhost",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost/mypage.html",
+      "webRoot": "${workspaceFolder}/wwwroot"
+    },
   ]
 }
