@@ -10,4 +10,4 @@
 
 #### 6. [let的理解](./18.02/18.02.01/index.md)
 
-#### 7. [zsh、bash、oh-my-zsh、iterm2](./18.02/18.03.08/shell.md)
+#### 7. [zsh、bash、oh-my-zsh、iterm2](./18.03/18.03.08/shell.md)
