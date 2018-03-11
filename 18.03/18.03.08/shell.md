@@ -48,8 +48,24 @@ vi  ~/.zshrc
 
 source ~/.zshrc
 ```
+
+- 安装autojump
+
+  autojump - a faster way to navigate your filesystem
+
+```zsh
+  brew install autojump
+```
+.zshrc文件中
+  ```
+   plugins = (git autojump)
+  ```
+  末尾添加
+  ```
+  [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+  ```
 ## iTerm2
-iTerm2是mac下最好的终端工具，如下是一些特殊功能：
+iTerm2是mac下的一个终端模拟器，如下是一些特殊功能：
 - 智能选中
 
   双击选中，三击选中正行，四击智能选中，可以识别网址，引号引起的字符串，邮箱地址。
@@ -58,15 +74,30 @@ iTerm2是mac下最好的终端工具，如下是一些特殊功能：
 - 巧用Command键
 
   按住command键：
-可以拖拽选中的字符串，点击url：调用默认浏览器访问该网址；点击文件：调用默认程序打开文件；点击文件夹：在finder中打开该文件夹；同时按住option键，可以以矩形选中
+  可以拖拽选中的字符串
+
+  点击url：调用默认浏览器访问该网址；
+  
+  点击文件：调用默认程序打开文件；
+  
+  点击文件夹：在finder中打开该文件夹；
+  
+  同时按住option键，可以以矩形选中
 
 - 常用快捷键
 
   切换tab: ⌘ + ← ，⌘ + →，⌘ + {，⌘ + }，⌘ + 数字直接定位到该tab；
+
   新建tab: ⌘ + t；
+
   顺序切换pane: ⌘ + [, ⌘ + ]；
+
   按方向切换pane: ⌘ + Option + 方向键；
+
   切分屏幕： ⌘ + d 水平切分，⌘ + Shift + d垂直切分；
+
   智能查找，支持正则查找： ⌘ + f
-  
-  
+
+  ⌘ + Option + e 全屏展示所有的tab，可以搜索
+
+  ⌘ + / 高亮当前鼠标的位置
