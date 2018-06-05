@@ -13,3 +13,5 @@
 #### 7. [zsh、bash、oh-my-zsh、iterm2](./18.03/18.03.08/shell.md)
 
 #### 8. [吾日十省吾身](./18.04/18.04.26/index.md)
+
+#### 9. [throttle和debounce的差异](./18.06/18.06.05/index.md)
