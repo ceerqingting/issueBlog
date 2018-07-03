@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+    }
+    .div1 {
+      height: 500px;
+      overflow: scroll;
+    }
+    .div2 {
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+    <div class="div2"></div>
+  </div>
+  <script>
+  /**
+ * 
+ * @param  {function}   func      传入函数
+ * @param  {number}     wait      表示时间窗口的间隔
+ * @param  {object}     options   开始边界不调用{leading: false}。
+ *                                结束边界不调用{trailing: false}
+ * @return {function}             返回客户调用函数   
+ */
+
+ // 如果结束边界不调用（{leading: false}）,则每次计算距离上一次触发时间的剩余时间，如果小于0，说明已经超过窗口间隔，则执行，重新赋值上一次触发时间；
+ // 如果结束边界调用，则选用定时器，如果没有启动过定时器，则新创建一个定时器，定时器到点触发之后，清除已有的定时器，重新赋值上一次触发时间；
+ // 类似于搭电梯，从第一个上去之后，每隔一个窗口时间运行一次，不等待，没人则待机
+  function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+      previous = options.leading === false ? 0 : Date.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+  
+    var throttled = function() {
+      var now = Date.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+
+    throttled.cancel = function() {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = context = args = null;
+    };
+
+    return throttled;
+  };
+  function test() {
+    console.log('scroll')
+  }
+
+  document.querySelector('.div1').addEventListener('scroll', throttle(test, 200))
+  </script>
+</body>
+</html>

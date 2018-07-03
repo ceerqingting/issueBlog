@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="input">
+  <script>
+    /**
+ *
+ * @param  {function} func        传入函数
+ * @param  {number}   wait        表示时间窗口的间隔
+ * @param  {boolean}  immediate   设置为ture时，调用触发于开始边界而不是结束边界
+ * @return {function}             返回客户调用函数
+ */
+
+  // 每触发一次，如果之前未开启定时器，则开启一个wait时间的定时器，如果有则清除，清除的情形有两种，一：定时器并未执行完，说明前后触发时间差小于wait；二：定时器已执行完，说明前后触发时间大于wait
+
+  // 类似于搭电梯，如果前后两个人上的时间差小于wait时间，则电梯重新开始计时，直到超过wait时间才开始运行，在此之前电梯上的所有人的运动合并为一次, immediate控制触发的时间点，为true时，时间点在开始端，false时间点在结尾端
+  
+  function debounce (func, wait, immediate) {
+    var timeout, result;
+    var later = function(context, args) {
+      timeout = null;
+      if (args) {
+        result = func.apply(context, args);
+      }
+    };
+    var debounced =function(args) {
+      if (timeout) clearTimeout(timeout);
+      if (immediate) {
+        var callNow = !timeout;
+        timeout = setTimeout(later, wait);
+        if (callNow) result = func(args);
+      } else {
+        timeout = setTimeout(function() {
+          return later.bind(null, this, args)
+        }.apply(this), wait);
+      }
+      return result;
+    }
+
+    debounced.cancel = function() {
+      clearTimeout(timeout);
+      timeout = null;
+    };
+
+    return debounced;
+  }; 
+  function test() {
+    console.log(this.value)
+  }
+  document.querySelector('#input').addEventListener('keyup', debounce(test, 1000))
+  </script>
+</body>
+</html>

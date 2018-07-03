@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+    }
+    .div1 {
+      height: 500px;
+      overflow: scroll;
+    }
+    .div2 {
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+    <div class="div2"></div>
+  </div>
+  <script>
+  // 获取函数多余的参数，这样就不需要使用arguments对象了。类似于es6的rest参数
+  function restArguments(func, startIndex) {
+    startIndex = startIndex == null ? func.length - 1 : +startIndex;
+    return function() {
+      var length = Math.max(arguments.length - startIndex, 0),
+          rest = Array(length),
+          index = 0;
+      for (; index < length; index++) {
+        rest[index] = arguments[index + startIndex];
+      }
+      switch (startIndex) {
+        case 0: return func.call(this, rest);
+        case 1: return func.call(this, arguments[0], rest);
+        case 2: return func.call(this, arguments[0], arguments[1], rest);
+      }
+      var args = Array(startIndex + 1);
+      for (index = 0; index < startIndex; index++) {
+        args[index] = arguments[index];
+      }
+      args[startIndex] = rest;
+      return func.apply(this, args);
+    };
+  };
+  
+  var getNow = Date.now || function() {
+    return new Date().getTime();
+  };
+
+    /**
+ * 
+ * @param  {function}   func      传入函数
+ * @param  {number}     wait      表示时间窗口的间隔
+ * @param  {object}     options   开始边界不调用{leading: false}。
+ *                                结束边界不调用{trailing: false}
+ * @return {function}             返回客户调用函数   
+ */
+  function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+      previous = options.leading === false ? 0 : getNow(); // now
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+  
+    var throttled = function() {
+      var now = getNow();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);  // >0
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+
+    throttled.cancel = function() {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = context = args = null;
+    };
+
+    return throttled;
+  };
+  function test() {
+    console.log('scroll')
+  }
+
+  document.querySelector('.div1').addEventListener('scroll', throttle(test, 2000))
+  </script>
+</body>
+</html>
