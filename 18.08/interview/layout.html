@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrap {
+      height: 100px;
+    }
+    .div1 {
+      background: red;
+    }
+    .div2 {
+      background: yellow;
+    }
+    .div3 {
+      background: blue;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>三栏布局</h1>
+  <p>flex布局</p>
+  <style>
+    .flex {
+      display: flex;
+    }
+    .flex .div1 {
+      width: 300px;
+    }
+    .flex .div3 {
+      width: 300px;
+    }
+    .flex .div2 {
+      flex: 1;
+    }
+  </style>
+  <div class="flex wrap">
+     <div class="div1"></div>
+     <div class="div2">舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊</div>
+     <div class="div3"></div>
+  </div>
+  <p>grid布局</p>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: 300px 1fr 300px;
+      grid-template-rows: repeat(3, 100px);
+    }
+  </style>
+  <div class="grid wrap">
+     <div class="div1"></div>
+     <div class="div2">舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊</div>
+     <div class="div3"></div>
+  </div>
+  <p>float布局</p>
+  <style>
+    .float{
+      overflow: hidden;
+    }
+    .float .div1 {
+      float: left;
+      width: 300px;
+      height: 100px;
+    }
+    .float .div3 {
+      float: right;
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+  <div class="float wrap">
+     <div class="div1"></div>
+     <div class="div3"></div>
+     <div class="div2">舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊</div>   
+  </div>
+  <p>absolute布局</p>
+  <style>
+    .absolute {
+      position: relative;
+    }
+    .absolute .div1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100px;
+    }
+    .absolute .div3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100px;
+    }
+    .absolute .div2 {
+      position: absolute;
+      top:0;
+      left: 300px;
+      right: 300px;
+      height: 100px;
+    }
+  </style>
+  <div class="absolute wrap">
+     <div class="div1"></div>
+     <div class="div2">舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊</div>
+     <div class="div3"></div>
+  </div>
+  <p>table布局</p>
+  <style>
+    .table {
+      width: 100%;
+      display: table;
+    }
+    .table div {
+      display: table-cell;
+    }
+    .table .div1 {
+      width: 300px;
+    }
+    .table .div3 {
+      width: 300px;
+    }
+  </style>
+  <div class="table wrap">
+     <div class="div1"></div>
+     <div class="div2">舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊舍得离开房间打卡时间防空雷达数据分类的省的浪费空间按时灯笼裤飞机离开啊省的浪费空间了啊省的浪费空间按时灯笼裤飞机啊撒旦看风景啊</div>
+     <div class="div3"></div>
+  </div>
+  <h1>水平垂直居中</h1>
+  <p>absolute + transform</p>
+  <style>
+    .at.parent {
+      width: 100%;
+      height: 100px;
+      position: relative;
+      background: pink;
+    }
+    .at .child {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: red;
+    }
+  </style>
+  <div class="at parent">
+    <div class="child"></div>
+  </div>
+  <p>table</p>
+  <style>
+    .table.parent {
+      width: 500px;
+      height: 100px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      background: pink;
+    }
+    .table .child {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      background: red;
+    }
+  </style>
+  <div class="table parent">
+    <div class="child"></div>
+  </div>
+  <p>flex</p>
+  <style>
+    .flex.parent {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: pink;
+    }
+    .flex .child {
+      width: 50px;
+      height: 50px;
+      background: red;
+    }
+  </style>
+  <div class="flex parent">
+    <div class="child"></div>
+  </div>
+</body>
+</html>

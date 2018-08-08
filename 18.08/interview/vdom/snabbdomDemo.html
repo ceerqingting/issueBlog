@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-class.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-props.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-style.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-eventlisteners.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.1/h.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="btn">change</button>
+  <script>
+    var data = [
+      {
+        name: '姓名',
+        age: '年龄',
+        address: '地址'
+      },
+      {
+        name: '张三',
+        age: '20',
+        address: '北京'
+      },
+      {
+        name: '李四',
+        age: '21',
+        address: '上海'
+      },
+      {
+        name: '王五',
+        age: '22',
+        address: '广州'
+      }
+    ]
+     var snabbdom = window.snabbdom
+
+     var patch = snabbdom.init([
+       snabbdom_class,
+       snabbdom_props,
+       snabbdom_style,
+       snabbdom_eventlisteners
+     ])
+
+     var h = snabbdom.h
+
+     var container = document.getElementById('container')
+     var btn = document.getElementById('btn')
+     var vnode;
+
+     function render() {
+       var newVode = h('table', {}, data.map(function(item) {
+         var tds = [];
+         var i;
+         for(i in item) {
+           if(item.hasOwnProperty(i)) {
+             tds.push(h('td', {}, item[i] + ''))
+           }
+         }
+         return h('tr', {}, tds)
+       }))
+       if(vnode) {
+         patch(vnode, newVode)
+       } else {
+         patch(container, newVode)
+       }
+       vnode = newVode
+     }
+     
+     function change() {
+       data[1].age = 30
+       data[2].address = '深圳'
+       render()
+     }
+     render(data)
+  
+     btn.addEventListener('click', change, false)
+  
+  </script>
+</body>
+</html>

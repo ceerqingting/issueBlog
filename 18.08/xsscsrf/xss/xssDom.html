@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="input">
+  <button id="btn">Submit</button>
+  <div id="div"></div>
+  <script>
+    const input = document.getElementById('input');
+    const btn = document.getElementById('btn');
+    const div = document.getElementById('div');
+    btn.addEventListener('click', () => {
+      div.innerHTML = `<a href=${input.value}>testLink</a>`
+    }, false)
+  </script>
+</body>
+</html>

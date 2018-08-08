@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <button id="btn">change</button>
+  <script>
+    var data = [
+      {
+        name: '张三',
+        age: '20',
+        address: '北京'
+      },
+      {
+        name: '李四',
+        age: '21',
+        address: '上海'
+      },
+      {
+        name: '王五',
+        age: '22',
+        address: '广州'
+      }
+    ]
+    function changeData () {
+      data[1].age = 30
+      data[2].address = '深圳'
+      render(data)
+    }
+
+    function render(data) {
+      var $container = $('#container')
+      $container.html('')
+
+      var $table = $('<table>')
+      $table.append($('<tr><td>name</td><td>age</td><td>address</td></tr>'))
+      data.forEach(function(item) {
+        $table.append($(`<tr><td>${item.name}</td><td>${item.age}</td><td>${item.address}</td></tr>`))
+      })
+      $container.append($table)
+    }
+
+    render(data)
+    
+    $('#btn').click(changeData)
+
+    var div = document.createElement('div');
+
+    var item, result = '';
+    
+    var i = 0;
+    for(item in div) {
+      result += '|' + item;
+      i++
+    }
+
+    console.log(result, i)
+
+  </script>
+</body>
+</html>
