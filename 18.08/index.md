@@ -73,3 +73,5 @@ Long time = c.getTimeInMillis();
 
 Math类位于java.lang包中，包含用于执行基本数学运算方法，Math类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如：Math.round();
 
+
+
