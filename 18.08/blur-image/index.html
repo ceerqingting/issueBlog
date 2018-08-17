@@ -40,28 +40,28 @@
      <div class="heightholder"></div>
   </div>
   <script>
-window.onload = function() {
-  
-  var placeholder = document.querySelector('.placeholder'),
-      small = placeholder.querySelector('.img-small'),
-      heightholder = placeholder.querySelector('.heightholder');
-  
-  // 1: load small image and show it
-  var img = new Image();
-  img.src = small.src;
-  img.onload = function () {
-      heightholder.style.paddingBottom = ((img.width / img.height) * 100).toFixed(2) + '%';
-      small.classList.add('loaded');
-  };
-  
-  // 2: load large image
-  var imgLarge = new Image();
-  imgLarge.src = placeholder.dataset.large; 
-  imgLarge.onload = function () {
-    imgLarge.classList.add('loaded');
-  };
-  placeholder.appendChild(imgLarge);
-}
+      window.onload = function() {
+        
+        var placeholder = document.querySelector('.placeholder'),
+            small = placeholder.querySelector('.img-small'),
+            heightholder = placeholder.querySelector('.heightholder');
+        
+        // 1: load small image and show it
+        var img = new Image();
+        img.src = small.src;
+        img.onload = function () {
+            heightholder.style.paddingBottom = ((img.width / img.height) * 100).toFixed(2) + '%';
+            small.classList.add('loaded');
+        };
+        
+        // 2: load large image
+        var imgLarge = new Image();
+        imgLarge.src = placeholder.dataset.large; 
+        imgLarge.onload = function () {
+          imgLarge.classList.add('loaded');
+        };
+        placeholder.appendChild(imgLarge);
+      }
   </script>
 </body>
 </html>
